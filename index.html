@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahul WinKey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #ff9933, #ffffff, #138808);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      width: 100%;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .flag {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin: 10px 0 20px;
+      color: #ff6600;
+    }
+
+    .aviator-img {
+      width: 160px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .coefficient {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #138808;
+      border: 3px solid #138808;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      background-color: #ff6600;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      width: 100%;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #e05500;
+    }
+
+    .timer {
+      font-size: 14px;
+      color: #555;
+      margin-top: 15px;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 13px;
+      color: #333;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://flagcdn.com/w320/in.png" alt="India Flag" class="flag">
+    <h1>Rahul WinKey</h1>
+
+    <img src="https://i.ibb.co/3mrwNfs/aviator.png" alt="Aviator" class="aviator-img">
+
+    <div class="coefficient" id="coefficient">1.00x</div>
+
+    <button class="btn" onclick="generateCoefficient()">Start</button>
+
+    <div class="timer">⏳ Access closes in <span id="countdown">04:59</span></div>
+
+    <div class="footer">Made by HackerHouse • Bengaluru</div>
+  </div>
+
+  <script>
+    // Генерация случайного коэффициента от 1.00x до 20.00x
+    function generateCoefficient() {
+      let value = (Math.random() * 19 + 1).toFixed(2);
+      document.getElementById("coefficient").textContent = value + "x";
+    }
+
+    // Таймер
+    let seconds = 299;
+    const countdownEl = document.getElementById("countdown");
+    setInterval(() => {
+      if (seconds > 0) seconds--;
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      countdownEl.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }, 1000);
+  </script>
+</body>
+</html>
